@@ -1,0 +1,17 @@
+{
+    "name": "mgr/polis812",
+    "description": "Test task for polis812.ru",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Mgr\\Polis812\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Maxim Grishin"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}
