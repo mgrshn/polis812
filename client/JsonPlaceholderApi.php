@@ -1,8 +1,12 @@
 <?php
 
-namespace Src\Api;
+namespace Client;
 
-require_once __DIR__ . "/../../vendor/autoload.php";
+require_once __DIR__ . "/../vendor/autoload.php";
+
+use Src\Api\UsersApi;
+use Src\Api\PostsApi;
+use Src\Api\TasksApi;
 
 class JsonPlaceholderApi
 {
@@ -50,10 +54,30 @@ class JsonPlaceholderApi
     public function getUserTasks(int $id): array
     {
         return $this->tasks->getUserTasks($id);
-    }  
+    }
+
+    public function createPost(string $title, string $body, int $userId): array
+    {
+        return $this->posts->createPost($title, $body, $userId);
+    }
+
+    public function updatePost(int $postId, string $title, string $body, int $userId): array
+    {
+        return $this->posts->updatePost($postId, $title, $body, $userId);
+    }
+
+    public function patchPost(int $postId, string $fieldName, string $newValue): array
+    {
+        return $this->posts->patchPost($postId, $fieldName, $newValue);
+    }
+
+    public function deletePost(int $postId): array
+    {
+        return $this->posts->deletePost($postId);
+    }
 }
 
-$api = new JsonPlaceholderApi();
+$apiClient = new JsonPlaceholderApi();
 
-$user = $api->getUsersByIds([88]);
-print_r($user);
+$tasks = $apiClient->getUserTasks(1);
+print_r($tasks);
